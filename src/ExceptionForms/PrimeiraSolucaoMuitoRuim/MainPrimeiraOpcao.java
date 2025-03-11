@@ -11,7 +11,10 @@ public class MainPrimeiraOpcao {
 
     public static void main(String[] args) throws ParseException {
         Scanner scanner = new Scanner(System.in);
-
+        /*
+            Porque é um metodo ruim essa primeira forma? porque a logica de validação
+            fica no programa principal, problma de delegação!
+         */
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
         System.out.print("Numero do quarto: ");

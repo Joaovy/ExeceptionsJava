@@ -3,7 +3,6 @@ package Model.entities;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.SimpleFormatter;
 
 public class Reservados {
 
@@ -44,10 +43,22 @@ public class Reservados {
 
     }
 
-    public void updateDate(Date checkIn, Date checkout){
+    public String updateDate(Date checkIn, Date checkout){
+
+        Date now = new Date();
+        if(checkIn.before(now) || checkout.before(now)){
+
+            return "Reservations dates for update must be future dates";
+
+        }if (!checkout.after(checkIn)){
+           return "Error in reservation: Check-out date must be after check-in date";
+
+        }
+
         this.checkIn = checkIn;
         this.checkout = checkout;
 
+        return null;
     }
 
     @Override
